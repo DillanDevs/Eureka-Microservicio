@@ -2,10 +2,13 @@ package co.com.asprilla.user_service.Controller;
 
 import co.com.asprilla.user_service.Entity.Alumno;
 import co.com.asprilla.user_service.Service.AlumnoService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -15,6 +18,18 @@ public class AlumnoController {
 
     public AlumnoController(AlumnoService service) {
         this.service = service;
+    }
+
+    @Value("${config.balanaceador.test}")
+    private String balanceadorTest;
+
+    @GetMapping("/balanceador-test")
+    public ResponseEntity<?> balanceadorTest() {
+        Map<String, Object> response = new HashMap<String, Object>();
+        response.put("balanceadorTest", balanceadorTest);
+        response.put("alumnos", service.findAll());
+
+        return ResponseEntity.ok().body(response);
     }
 
     @GetMapping
