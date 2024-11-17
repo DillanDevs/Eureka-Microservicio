@@ -7,7 +7,11 @@ import java.util.Optional;
 
 public class CommonServiceImpl<E, R extends CrudRepository<E, Long>> implements CommonService<E> {
 
-    private R dao;
+    private final R dao;
+
+    public CommonServiceImpl(R alumnoRepository) {
+        this.dao = alumnoRepository;
+    }
 
     @Override
     @Transactional(readOnly = true)

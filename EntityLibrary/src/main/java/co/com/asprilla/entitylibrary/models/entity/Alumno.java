@@ -1,4 +1,4 @@
-package co.com.asprilla.user_service.Entity;
+package co.com.asprilla.entitylibrary.models.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,5 +28,18 @@ public class Alumno {
     private void prePersist() {
         this.createAt = new Date();
     }
+
+    @Override
+    public boolean equals (Object obj){
+        if(this == obj){
+            return true;
+        }
+        if(!(obj instanceof Alumno)){
+            return false;
+        }
+        Alumno a = (Alumno) obj;
+        return this.Id != null && this.Id.equals(a.getId());
+    }
+
 
 }

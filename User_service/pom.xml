@@ -70,6 +70,11 @@
             <artifactId>Libreria</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>co.com.asprilla</groupId>
+            <artifactId>EntityLibrary</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
